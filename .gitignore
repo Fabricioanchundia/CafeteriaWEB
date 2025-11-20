@@ -1,0 +1,13 @@
+# Ignorar dependencias y builds en todos los servicios
+**/node_modules/
+**/dist/
+**/.next/
+
+# Logs
+**/npm-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# Env
+.env
+.env.*
