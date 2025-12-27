@@ -4,20 +4,7 @@ Plataforma web moderna para una cafetería, desarrollada con **Next.js + TypeScr
 
 Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de confirmación y un **video demo cinematográfico**.
 
----
 
-## 🎥 Video Demo (Experiencia completa)
-
-> 🎬 Video generado con IA (estilo Sora) que representa la experiencia del cliente:
-> ingreso al café, exploración del menú y realización del pedido.
-
-🔗 **Ver video demo (reproductor GitHub):**  
-https://github.com/Fabricioanchundia/CafeteriaWEB/urban-roast-demo.mp4
-
-
-
-```md
-[▶ Ver video demo](./urban-roast-demo%20-%20copia.mp4)
 ```
 
 ---
