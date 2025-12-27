@@ -10,54 +10,105 @@ export class OrderItemService {
   private MENU_BASE = 'http://localhost:3002/menu-service';
 
   constructor(
-    @InjectRepository(OrderItem) private readonly orderItemRepo: Repository<OrderItem>,
-    @InjectRepository(Order) private readonly orderRepo: Repository<Order>,
+    @InjectRepository(OrderItem)
+    private readonly orderItemRepo: Repository<OrderItem>,
+
+    @InjectRepository(Order)
+    private readonly orderRepo: Repository<Order>,
+
     private readonly httpService: HttpService,
   ) {}
 
   private async fetchMenuItem(id: number): Promise<any | null> {
     const paths = ['/menu-items/:id', '/menu/:id', '/:id', '/menu-service/:id'];
+
     for (const p of paths) {
       try {
-        const resp = await this.httpService.axiosRef.get(`${this.MENU_BASE}${p.replace(':id', String(id))}`);
-        if (resp && resp.status >= 200 && resp.status < 300 && resp.data) return resp.data;
-      } catch {}
+        const resp = await this.httpService.axiosRef.get(
+          `${this.MENU_BASE}${p.replace(':id', String(id))}`,
+        );
+
+        if (resp?.status >= 200 && resp.status < 300 && resp.data) {
+          return resp.data;
+        }
+      } catch {
+        // se ignora y se prueba el siguiente path
+      }
     }
+
     return null;
   }
 
-  async create(dto: { orderId: number; menuItemId: number; quantity: number; price?: number }) {
-    const order = await this.orderRepo.findOne({ where: { id: dto.orderId } });
-    if (!order) throw new NotFoundException('Order not found');
+  // 🔥 MÉTODO CORREGIDO
+  async create(dto: {
+    orderId: number;
+    menuItemId: number;
+    quantity: number;
+    price?: number;
+  }) {
+    // 1️⃣ Validar orden
+    const order = await this.orderRepo.findOne({
+      where: { id: dto.orderId },
+    });
 
+    if (!order) {
+      throw new NotFoundException('Order not found');
+    }
+
+    // 2️⃣ Validar producto
     const menuItem = await this.fetchMenuItem(dto.menuItemId);
-    if (!menuItem) throw new NotFoundException('MenuItem not found');
+    if (!menuItem) {
+      throw new NotFoundException('MenuItem not found');
+    }
 
+    // 3️⃣ Crear item
     const price = dto.price ?? Number(menuItem.price ?? 0);
+
     const item = this.orderItemRepo.create({
       order,
       menuItemId: dto.menuItemId,
       quantity: dto.quantity,
       price,
     });
-    return this.orderItemRepo.save(item);
+
+    // 4️⃣ Guardar item
+    const savedItem = await this.orderItemRepo.save(item);
+
+    // 5️⃣ 🔥 RECARGAR ORDEN CON ITEMS (CLAVE)
+    const updatedOrder = await this.orderRepo.findOne({
+      where: { id: order.id },
+      relations: ['items'],
+    });
+
+    // 6️⃣ Devolver respuesta coherente
+    return {
+      ...savedItem,
+      order: updatedOrder,
+    };
   }
 
   async findAll(): Promise<OrderItem[]> {
-    return this.orderItemRepo.find();
+    return this.orderItemRepo.find({
+      relations: ['order'],
+    });
   }
 
   async findOne(id: number): Promise<OrderItem> {
-    const item = await this.orderItemRepo.findOne({ where: { id } });
-    if (!item) throw new NotFoundException('OrderItem not found');
+    const item = await this.orderItemRepo.findOne({
+      where: { id },
+      relations: ['order'],
+    });
+
+    if (!item) {
+      throw new NotFoundException('OrderItem not found');
+    }
+
     return item;
   }
 
   async update(id: number, dto: Partial<OrderItem>): Promise<OrderItem> {
     await this.orderItemRepo.update(id, dto);
-    const updated = await this.findOne(id);
-    if (!updated) throw new NotFoundException('OrderItem not found');
-    return updated;
+    return this.findOne(id);
   }
 
   async remove(id: number): Promise<void> {

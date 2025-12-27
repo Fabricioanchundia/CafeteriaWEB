@@ -1,37 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Category } from './entities/category.entity';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {
-  private categories: { id: number; name: string }[] = [];
-  private idCounter = 1;
+  constructor(
+    @InjectRepository(Category)
+    private readonly categoryRepository: Repository<Category>,
+  ) {}
 
-  create(dto: CreateCategoryDto) {
-    const newCat = { id: this.idCounter++, ...dto };
-    this.categories.push(newCat);
-    return newCat;
+  async create(dto: CreateCategoryDto) {
+    const category = this.categoryRepository.create(dto);
+    return this.categoryRepository.save(category);
   }
 
-  findAll() {
-    return this.categories;
+  async findAll() {
+    return this.categoryRepository.find();
   }
 
-  findOne(id: number) {
-    return this.categories.find(c => c.id === id) || null;
+  async findOne(id: number) {
+    const category = await this.categoryRepository.findOne({ where: { id } });
+    if (!category) {
+      throw new NotFoundException(`Category con id ${id} no encontrada`);
+    }
+    return category;
   }
 
-  update(id: number, dto: UpdateCategoryDto) {
-    const i = this.categories.findIndex(c => c.id === id);
-    if (i === -1) return null;
-    this.categories[i] = { ...this.categories[i], ...dto };
-    return this.categories[i];
+  async update(id: number, dto: UpdateCategoryDto) {
+    const category = await this.findOne(id);
+    Object.assign(category, dto);
+    return this.categoryRepository.save(category);
   }
 
-  remove(id: number) {
-    const i = this.categories.findIndex(c => c.id === id);
-    if (i === -1) return null;
-    const [deleted] = this.categories.splice(i, 1);
-    return deleted;
+  async remove(id: number) {
+    const category = await this.findOne(id);
+    return this.categoryRepository.remove(category);
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { compare } from 'bcrypt';   // 👈 FALTABA ESTO
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
@@ -8,36 +9,53 @@ import { User } from './entities/user.entity';
 @Injectable()
 export class AuthService {
   constructor(
-    private jwtService: JwtService,
     @InjectRepository(User)
-    private userRepo: Repository<User>,
+    private readonly userRepo: Repository<User>,
+    private readonly jwtService: JwtService,
   ) {}
 
-  async register(username: string, password: string) {
-    const exists = await this.userRepo.findOne({ where: { username } });
-    if (exists) throw new UnauthorizedException('Usuario ya existe');
+  // ============================
+  // 📌 REGISTRO
+  // ============================
+  async register(email: string, password: string, role: string = 'customer') {
+    const exists = await this.userRepo.findOne({ where: { email } });
+    if (exists) throw new UnauthorizedException('El usuario ya existe');
 
     const hashed = await bcrypt.hash(password, 10);
-    const user = this.userRepo.create({ username, password: hashed });
+
+    const user = this.userRepo.create({
+      email,
+      password: hashed,
+      role,
+    });
+
     await this.userRepo.save(user);
 
     return { message: 'Usuario registrado con éxito', user };
   }
 
-  async login(username: string, password: string) {
-    const user = await this.userRepo.findOne({ where: { username } });
-    if (!user) throw new UnauthorizedException('Usuario no encontrado');
+  // ============================
+  // 📌 LOGIN
+  // ============================
+  async login(email: string, password: string) {
+    const user = await this.userRepo.findOne({ where: { email } });
 
-    const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) throw new UnauthorizedException('Contraseña incorrecta');
+    if (!user) throw new UnauthorizedException('Email incorrecto');
 
-    const payload = { username: user.username, sub: user.id };
-    const token = this.jwtService.sign(payload);
+    // 👇 AHORA SÍ FUNCIONA
+    const isMatch = await compare(password, user.password);
 
-    return { access_token: token };
-  }
+    if (!isMatch) throw new UnauthorizedException('Contraseña incorrecta');
 
-  verifyToken(token: string) {
-    return this.jwtService.verify(token);
+    const payload = {
+      id: user.id,
+      email: user.email,
+      role: user.role,
+    };
+
+    return {
+      access_token: this.jwtService.sign(payload),
+      role: user.role,
+    };
   }
 }

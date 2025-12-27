@@ -34,39 +34,43 @@ export class AnalyticsService {
     const rows = await this.orderRepo
       .createQueryBuilder('o')
       .select('DATE(o.createdAt)', 'date')
-      .addSelect('COUNT(*)', 'orders')
-      .addSelect('COALESCE(SUM(o.total), 0)', 'revenue')
+      .addSelect('COALESCE(SUM(o.total), 0)', 'total')
       .groupBy('DATE(o.createdAt)')
       .orderBy('DATE(o.createdAt)', 'ASC')
       .getRawMany();
 
-    return rows.map((r) => ({
+    return rows.map(r => ({
       date: r.date,
-      orders: Number(r.orders),
-      revenue: Number(r.revenue),
+      total: Number(r.total),
     }));
   }
 
-  // 📌 3. Items más vendidos
+  // 📌 3. Items más vendidos (FIX DEFINITIVO)
   async getTopItems(limit = 5) {
     const rows = await this.itemRepo
       .createQueryBuilder('i')
       .select('i.menuItemId', 'menuItemId')
+      .addSelect('i.product_name', 'productName') // DB: snake_case
       .addSelect('SUM(i.quantity)', 'qty')
-      .addSelect('COALESCE(SUM(i.price * i.quantity), 0)', 'revenue')
+      .addSelect(
+        'SUM(CAST(i.price AS NUMERIC) * i.quantity)',
+        'revenue',
+      )
       .groupBy('i.menuItemId')
+      .addGroupBy('i.product_name')
       .orderBy('qty', 'DESC')
       .limit(limit)
       .getRawMany();
 
-    return rows.map((r) => ({
+    return rows.map(r => ({
       menuItemId: Number(r.menuItemId),
+      productName: r.productName,
       quantitySold: Number(r.qty),
       revenue: Number(r.revenue),
     }));
   }
 
-  // 📌 4. Método para registrar órdenes desde ORDER-SERVICE
+  // 📌 4. Registrar órdenes desde ORDER-SERVICE
   async registerOrder(order: any) {
     // ➤ Insertar la orden
     const newOrder = this.orderRepo.create({
@@ -78,11 +82,12 @@ export class AnalyticsService {
 
     await this.orderRepo.save(newOrder);
 
-    // ➤ Insertar los items
-    if (order.items && Array.isArray(order.items)) {
+    // ➤ Insertar items
+    if (Array.isArray(order.items)) {
       for (const it of order.items) {
         const item = this.itemRepo.create({
           menuItemId: it.menuItemId,
+          productName: it.productName, // 👈 IMPORTANTE
           quantity: it.quantity,
           price: it.price,
           order: newOrder,

@@ -73,12 +73,16 @@ app.use(
   }),
 );
 app.use(
-  '/analytics',
+  "/analytics",
   createProxyMiddleware({
-    target: 'http://localhost:3005/analytics',
+    target: "http://localhost:3005/analytics",
     changeOrigin: true,
-  }),
+    pathRewrite: {
+      "^/analytics": "",
+    },
+  })
 );
+
 
 app.listen(3000, () => {
   console.log('🚀 API Gateway corriendo en http://localhost:3000');

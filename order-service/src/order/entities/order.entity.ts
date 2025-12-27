@@ -1,7 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  CreateDateColumn,
+} from 'typeorm';
 import { OrderItem } from '../../order-item/entities/order-item.entity';
 
-@Entity()
+@Entity('orders')
 export class Order {
   @PrimaryGeneratedColumn()
   id: number;
@@ -9,18 +15,18 @@ export class Order {
   @Column()
   customerId: number;
 
-  @Column()
+  @Column({ default: 'pending' })
   status: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn()
   createdAt: Date;
 
   @Column('decimal', { precision: 10, scale: 2, default: 0 })
-  total: number;   // 💥 ESTE CAMPO FALTABA
+  total: number;
 
-  @OneToMany(() => OrderItem, (item) => item.order, {
+  // 🔥 RELACIÓN CORRECTA
+  @OneToMany(() => OrderItem, item => item.order, {
     cascade: true,
-    eager: true,
   })
   items: OrderItem[];
 }

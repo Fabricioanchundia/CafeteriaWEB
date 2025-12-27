@@ -1,7 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Order } from '../../order/entities/order.entity';
 
-@Entity()
+@Entity('order_item')
 export class OrderItem {
   @PrimaryGeneratedColumn()
   id: number;
@@ -15,7 +21,10 @@ export class OrderItem {
   @Column('decimal', { precision: 10, scale: 2 })
   price: number;
 
-  @ManyToOne(() => Order, (order) => order.items, { onDelete: 'CASCADE' })
+  // 🔥 RELACIÓN HIJO → PADRE
+  @ManyToOne(() => Order, order => order.items, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'orderId' })
   order: Order;
 }
