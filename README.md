@@ -161,7 +161,7 @@ npm run dev
 ```
 
 📍 **Aplicación disponible en:**
-[http://localhost:3007](http://localhost:3007)
+[http://localhost:3007](http://localhost:3007/dashboard/customers)
 
 ---
 
