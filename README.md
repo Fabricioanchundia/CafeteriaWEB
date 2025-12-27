@@ -8,10 +8,12 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ## 🎥 Video Demo (Experiencia completa)
 
-> 🎬 Video generado con IA (Sora-style) mostrando la experiencia del cliente:
-> entrar al café, navegar el menú y ordenar.
+> 🎬 Video generado con IA (estilo Sora) que muestra la experiencia del cliente:
+> ingreso al café, navegación del menú y proceso de pedido.
 
-📁 **Archivo:** `urban-roast-demo - copia.mp4`
+📁 **Archivo:** `urban-roast-demo-copia.mp4`  
+El video se encuentra disponible en el repositorio.
+
 
 ```md
 [▶ Ver video demo](./urban-roast-demo%20-%20copia.mp4)
@@ -89,22 +91,84 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ---
 
-## 🧠 Arquitectura (resumen)
+🧱 Arquitectura real del proyecto – Café Urban Roast
 
-```txt
-Frontend (Next.js)
- ├── Auth
- ├── Menu
- ├── Cart (Zustand)
- ├── Checkout
- └── Video Demo
+El sistema está construido bajo una arquitectura de microservicios, con separación clara de responsabilidades y un frontend desacoplado.
 
-Backend (Microservices)
- ├── auth-service
- ├── menu-service
- ├── order-service
- └── web-socket
-```
+CAFETERIAWEB/
+│
+├── cafeteriaweb-frontend/        # Frontend (Next.js)
+│   ├── app/                      # App Router
+│   ├── components/               # UI Components
+│   ├── stores/                   # Zustand (cart, user, orders)
+│   ├── styles/                   # Estilos globales
+│   └── public/                   # Imágenes y video demo
+│
+├── api-gateway/                  # Punto de entrada único
+│   ├── Express / Nest Gateway
+│   └── Redirección a microservicios
+│
+├── auth-service/                 # Autenticación y roles
+│   ├── Login / Register
+│   ├── JWT
+│   └── Roles (admin / customer)
+│
+├── customer-service/             # Gestión de clientes
+│   ├── Perfil
+│   └── Datos del cliente
+│
+├── menu-service/                 # Menú y productos
+│   ├── Categorías
+│   ├── Productos
+│   └── Precios
+│
+├── order-service/                # Pedidos
+│   ├── Orders
+│   ├── OrderItems
+│   └── Estados (pendiente, preparando, listo)
+│
+├── web-socket/                   # Comunicación en tiempo real
+│   ├── Estado del pedido
+│   └── Notificaciones live
+│
+├── analytics-service/            # Métricas y reportes
+│   ├── Ventas
+│   ├── Ingresos
+│   └── Productos más vendidos
+│
+├── domain/                       # Modelos compartidos
+│   ├── DTOs
+│   ├── Interfaces
+│   └── Tipos comunes
+│
+└── .vscode / config / env         # Configuración
+
+🧠 ¿Por qué esta arquitectura es correcta?
+
+✔ Frontend desacoplado (puede escalar o cambiar de framework)
+✔ Microservicios independientes (deploy por separado)
+✔ API Gateway como patrón profesional
+✔ WebSocket para estados en tiempo real
+✔ Domain layer compartido (buena práctica senior)
+✔ Analytics separado (visión de negocio)
+
+Esto NO es un CRUD escolar, es una arquitectura tipo startup / SaaS.
+
+🔄 Flujo real del sistema
+Cliente (Frontend)
+   ↓
+API Gateway
+   ↓
+┌───────────────┐
+│ auth-service  │
+│ menu-service  │
+│ order-service │
+│ customer-serv │
+└───────────────┘
+   ↓
+web-socket → estado en tiempo real
+   ↓
+analytics-service
 
 ---
 
