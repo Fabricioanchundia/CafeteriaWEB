@@ -131,7 +131,8 @@ CAFETERIAWEB/
 │   └── Tipos comunes
 │
 └── .vscode / config / env         # Configuración
----
+---text
+
 
 🧠 ¿Por qué esta arquitectura es correcta?
 
