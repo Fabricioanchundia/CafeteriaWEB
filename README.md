@@ -1,226 +1,145 @@
-# ☕ Café Urban Roast — Full-Stack Ordering Platform
+# ☕ Café Urban Roast – Plataforma Web (Portafolio)
 
-<p align="center">
-  <img src="./screenshots/banner.png" alt="Café Urban Roast Banner" width="100%" />
-</p>
+Plataforma web moderna para una cafetería, desarrollada con **Next.js + TypeScript**, enfocada en **UX real**, **arquitectura escalable** y **experiencia tipo producto comercial**.
 
-> Plataforma web moderna para cafeterías que permite **navegar el menú**, **agregar productos al carrito**, **confirmar pedidos** y **vivir una experiencia de usuario profesional**, con un **dashboard administrativo** y **checkout animado**.
-
-🎯 **Proyecto diseñado para portafolio profesional (Junior / Mid Full-Stack)**
+Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de confirmación y un **video demo cinematográfico**.
 
 ---
 
-## 🎥 Video Demo — Experiencia Real del Usuario
+## 🎥 Video Demo (Experiencia completa)
 
-<p align="center">
-  <video src="./public/videos/urban-roast-demo.mp4" controls width="100%"></video>
-</p>
+> 🎬 Video generado con IA (Sora-style) mostrando la experiencia del cliente:
+> entrar al café, navegar el menú y ordenar.
 
-> 🎬 El video muestra el flujo completo:
+📁 **Archivo:** `urban-roast-demo - copia.mp4`
 
-* Landing del cliente
-* Navegación por categorías
-* Cards de productos con imágenes
-* Carrito lateral (drawer)
-* Checkout
-* Confirmación animada del pedido
-
-📌 *GitHub no reproduce autoplay, pero el video se puede reproducir directamente.*
+```md
+[▶ Ver video demo](./urban-roast-demo%20-%20copia.mp4)
+```
 
 ---
 
-## 🖼️ Screenshots (Renderizados en GitHub)
+## 🖼️ Capturas del sistema
 
-### 🧑‍🍳 Vista Cliente
+### 🔐 Login
 
-<p align="center">
-  <img src="./screenshots/customer-home.png" width="45%" />
-  <img src="./screenshots/products.png" width="45%" />
-</p>
+📁 `background-login-urbanroast.png`
+📁 `Captura de pantalla 2025-12-26 224131.png`
 
-<p align="center">
-  <img src="./screenshots/cart.png" width="45%" />
-  <img src="./screenshots/checkout.png" width="45%" />
-</p>
-
-<p align="center">
-  <img src="./screenshots/order-success.png" width="45%" />
-</p>
+![Login](./background-login-urbanroast.png)
+![Login Form](./Captura%20de%20pantalla%202025-12-26%20224131.png)
 
 ---
 
-### 🧑‍💼 Dashboard Admin
+### ☕ Home – Menú principal
 
-<p align="center">
-  <img src="./screenshots/admin-dashboard.png" width="45%" />
-  <img src="./screenshots/analytics.png" width="45%" />
-</p>
+📁 `Captura de pantalla 2025-12-26 224221.png`
+
+![Home](./Captura%20de%20pantalla%202025-12-26%20224221.png)
 
 ---
 
-## 🚀 Funcionalidades Principales
+### 🧾 Catálogo de productos
 
-### Cliente
+📁 `Captura de pantalla 2025-12-26 224235.png`
 
-* ✅ Navegación por categorías
-* ✅ Cards de productos con imágenes + hover
-* ✅ Carrito persistente con **Zustand**
-* ✅ Cálculo automático (subtotal, IVA, total)
+![Productos](./Captura%20de%20pantalla%202025-12-26%20224235.png)
+
+---
+
+### 🛒 Carrito y Checkout
+
+📁 `Captura de pantalla 2025-12-26 224247.png`
+
+![Checkout](./Captura%20de%20pantalla%202025-12-26%20224247.png)
+
+---
+
+## ✨ Funcionalidades clave
+
+* ✅ Autenticación por roles (customer / admin)
+* ✅ Menú dinámico por categorías
+* ✅ Carrito global con Zustand
 * ✅ Checkout con:
 
   * Pago en efectivo
-  * Pago con tarjeta (Stripe – demo)
-* ✅ Confirmación animada (check + confetti)
-* ✅ Video demo integrado en la experiencia
-
-### Admin
-
-* ✅ Dashboard administrativo
-* ✅ Gestión y visualización de órdenes
-* ✅ Analíticas de ventas
-* ✅ UI profesional tipo sistema real
+  * Flujo preparado para Stripe
+* ✅ Animación PRO de confirmación de pedido
+* ✅ Arquitectura preparada para backend real
+* ✅ UX moderna (mobile-first)
 
 ---
 
-## 🧠 Arquitectura del Sistema
+## 🧱 Stack tecnológico
 
-### 🧩 Backend (Microservicios)
-
-* API Gateway (Express)
-* auth-service
-* customer-service
-* menu-service
-* order-service
-* analytics-service
-
-**Tecnologías**
-
-* NestJS
-* TypeORM
-* PostgreSQL
-* JWT
-* WebSockets (preparado)
-
-### 🎨 Frontend
+**Frontend**
 
 * Next.js 14 (App Router)
 * TypeScript
 * Tailwind CSS
-* Zustand
-* Stripe (modo demo)
-* Framer Motion
-* Canvas Confetti
+* Zustand (state global)
+* Stripe (estructura lista)
+
+**Backend (microservicios – en progreso)**
+
+* NestJS
+* PostgreSQL
+* WebSockets (estado del pedido)
+* API Gateway
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🧠 Arquitectura (resumen)
 
-| Capa          | Tecnologías                            |
-| ------------- | -------------------------------------- |
-| Frontend      | Next.js, TypeScript, Tailwind, Zustand |
-| Backend       | NestJS, TypeORM                        |
-| Base de Datos | PostgreSQL                             |
-| Autenticación | JWT                                    |
-| Pagos         | Stripe (Demo)                          |
-| Animaciones   | Framer Motion                          |
-| Video         | IA (Sora)                              |
+```txt
+Frontend (Next.js)
+ ├── Auth
+ ├── Menu
+ ├── Cart (Zustand)
+ ├── Checkout
+ └── Video Demo
 
----
-
-## ▶️ Cómo Ejecutar el Proyecto
-
-### 1️⃣ Clonar repositorio
-
-```bash
-git clone https://github.com/Fabricioanchundia/cafeteriaweb.git
+Backend (Microservices)
+ ├── auth-service
+ ├── menu-service
+ ├── order-service
+ └── web-socket
 ```
 
-### 2️⃣ Frontend
+---
+
+## 🚀 Cómo ejecutar el proyecto
 
 ```bash
-cd cafeteriaweb-frontend
+# Instalar dependencias
 npm install
+
+# Ejecutar en desarrollo
 npm run dev
 ```
 
-Crear `.env.local`:
-
-```env
-NEXT_PUBLIC_STRIPE_PUBLIC_KEY=pk_test_xxxxx
-```
-
-### 3️⃣ Backend (por microservicio)
-
-```bash
-npm install
-npm run start:dev
-```
-
-Configurar `.env` con PostgreSQL y JWT según el servicio.
+📍 App disponible en:
+`http://localhost:3007`
 
 ---
 
-## 💡 Decisiones de Diseño (Para entrevistas)
+## 🎯 Objetivo del proyecto
 
-* Arquitectura por microservicios → escalabilidad real
-* Estado global con Zustand → simple y eficiente
-* Checkout desacoplado del backend → preparado para producción
-* UX enfocada en fluidez y claridad
-* Video demo para mostrar el sistema funcionando (no solo código)
+Este proyecto fue desarrollado como **pieza de portafolio profesional**, demostrando:
 
----
-
-## 📌 Roadmap
-
-* 🔄 Estados de pedido en tiempo real (WebSocket)
-* 🧾 Historial de pedidos del cliente
-* 📊 Más métricas en analíticas
-* 💳 Stripe en modo producción
-* 📱 Optimización mobile-first
+* Pensamiento de producto
+* UX realista
+* Código limpio y escalable
+* Integración de IA (video demo)
+* Preparación para entornos reales de pago y backend
 
 ---
 
 ## 👨‍💻 Autor
 
 **Alex Fabricio Anchundia Mero**
-Estudiante de Ingeniería de Software
-Full-Stack Developer en formación
-
-📍 Ecuador
-🔗 GitHub: [https://github.com/Fabricioanchundia](https://github.com/Fabricioanchundia)
-
----
-
-## ⭐ ¿Por qué este proyecto destaca?
-
-✔ No es un CRUD básico
-✔ Arquitectura real
-✔ UX cuidada
-✔ Animaciones y video demo
-✔ Pensado como producto, no como tarea
-
----
-
-## 📂 Estructura importante para que las imágenes SE VEAN
-
-```
-/screenshots
-  ├─ banner.png
-  ├─ customer-home.png
-  ├─ products.png
-  ├─ cart.png
-  ├─ checkout.png
-  ├─ order-success.png
-  ├─ admin-dashboard.png
-  └─ analytics.png
-
-/public/videos
-  └─ urban-roast-demo.mp4
-```
-
----
+Ingeniería de Software – Ecuador 🇪🇨
+💼 Backend / Full Stack Developer
+📫 Contacto vía GitHub / LinkedIn : https://www.linkedin.com/in/fabricio-anchundia-978466308/
 
 
-
-
-Dime qué sigue, amor. Estoy contigo hasta que consigas ese trabajo. 💪☕
