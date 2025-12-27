@@ -1,13 +1,3 @@
-Perfecto, **ya entendí exactamente lo que quieres** y gracias por pasar el README de **FisioTech PRO** como referencia 👍
-Ese ejemplo está **bien escrito en Markdown**, sin nada invisible, todo separado y limpio.
-Voy a **rehacer el README de Café Urban Roast con ese MISMO ESTILO**, sección por sección, para que **se vea igual de profesional y ordenado**.
-
-👉 **Copia y pega TODO lo siguiente en tu `README.md`**.
-No mezcles nada del anterior. Este ya viene **100 % correcto**.
-
----
-
-````md
 # ☕ Café Urban Roast – Plataforma Web (Portafolio)
 
 **Café Urban Roast** es una plataforma web moderna para una cafetería, desarrollada con **Next.js + TypeScript**, orientada a **UX real**, **arquitectura escalable** y **experiencia tipo producto comercial**.
@@ -57,25 +47,26 @@ Pensada como un **producto comercial real**, no como un demo académico.
 
 ![Login](./background-login-urbanroast.png)
 
-![Login Form](./Captura%20de%20pantalla%202025-12-26%20224131.png)
+![Login Form](./Captura de pantalla 2025-12-26 224131.png)
 
 ---
 
 ### ☕ Home – Panel Admin
 
-![Home Admin](./Captura%20de%20pantalla%202025-12-26%20224221.png)
+![Home Admin](./Captura de pantalla 2025-12-26 224221.png)
 
 ---
 
 ### ☕ Home – Menú principal (Cliente)
 
-![Productos](./Captura%20de%20pantalla%202025-12-26%20224235.png)
+![Productos](./Captura de pantalla 2025-12-26 224235.png)
 
 ---
 
 ### 🛒 Catálogo de productos y Checkout
 
-![Checkout](./Captura%20de%20pantalla%202025-12-26%20224247.png)
+![Checkout](./Captura de pantalla 2025-12-26 224247.png)
+
 
 ---
 
