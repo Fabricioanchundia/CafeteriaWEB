@@ -47,7 +47,7 @@ Pensada como un **producto comercial real**, no como un demo académico.
 
 ![Login](./background-login-urbanroast.png)
 
-![Login Form](./Captura de pantalla 2025-12-26 224131.png)
+![Login Form](./Captura-de-pantalla-2025-12-26-224131.png)
 
 ---
 
