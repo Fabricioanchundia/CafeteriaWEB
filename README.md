@@ -19,7 +19,7 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ---
 
-### ☕ Home – Menú principal
+### ☕ HOME-ADMIN
 
 📁 `Captura de pantalla 2025-12-26 224221.png`
 
@@ -27,7 +27,7 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ---
 
-### 🧾 Catálogo de productos
+### ☕ Home – Menú principal
 
 📁 `Captura de pantalla 2025-12-26 224235.png`
 
@@ -35,7 +35,7 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ---
 
-### 🛒 Carrito y Checkout
+### 🛒 CATALOGO DE PRODUCTOS
 
 📁 `Captura de pantalla 2025-12-26 224247.png`
 
