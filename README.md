@@ -51,23 +51,30 @@ Pensada como un **producto comercial real**, no como un demo académico.
 
 ## 🖼️ Capturas del sistema
 
+---
+
 ### 🔐 Login
-![Login](./background-login-urbanroast.png)  
+
+![Login](./background-login-urbanroast.png)
+
 ![Login Form](./Captura%20de%20pantalla%202025-12-26%20224131.png)
 
 ---
 
 ### ☕ Home – Panel Admin
+
 ![Home Admin](./Captura%20de%20pantalla%202025-12-26%20224221.png)
 
 ---
 
 ### ☕ Home – Menú principal (Cliente)
-![Menú Cliente](./Captura%20de%20pantalla%202025-12-26%20224235.png)
+
+![Productos](./Captura%20de%20pantalla%202025-12-26%20224235.png)
 
 ---
 
 ### 🛒 Catálogo de productos y Checkout
+
 ![Checkout](./Captura%20de%20pantalla%202025-12-26%20224247.png)
 
 ---
