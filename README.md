@@ -12,10 +12,10 @@ La aplicación simula un flujo real de compra, desde la navegación del menú ha
 
 La aplicación ofrece:
 
-- Navegación fluida por categorías
-- Interfaz clara y moderna
-- Diseño **mobile-first**
-- Animaciones de confirmación de pedido
+- Navegación fluida por categorías  
+- Interfaz clara y moderna  
+- Diseño **mobile-first**  
+- Animaciones de confirmación de pedido  
 
 Pensada como un **producto comercial real**, no como un demo académico.
 
@@ -23,10 +23,10 @@ Pensada como un **producto comercial real**, no como un demo académico.
 
 ### ✔️ Gestión de pedidos
 
-- Carrito global persistente
-- Actualización en tiempo real del estado del pedido
-- Flujo de checkout claro y extensible
-- Preparado para integración con pasarelas de pago (Stripe)
+- Carrito global persistente  
+- Actualización del estado del pedido  
+- Flujo de checkout claro y extensible  
+- Preparado para integración con Stripe  
 
 ---
 
@@ -41,26 +41,29 @@ Pensada como un **producto comercial real**, no como un demo académico.
 
 ## 🖼️ Capturas del sistema
 
----
-
 ### 🔐 Login
 
 ![Login](./background-login-urbanroast.png)
 
-📁 Captura de pantalla 2025-12-26 224131.png
+![Login Form](https://github.com/Fabricioanchundia/CafeteriaWEB/blob/main/Captura%20de%20pantalla%202025-12-26%20224131.png)
 
-☕ Home – Menú principal
+---
 
-📁 Captura de pantalla 2025-12-26 224221.png
+### ☕ Home – Panel Admin
 
-🧾 Catálogo de productos
+![Home Admin](./captura de pantalla 2025-12-26 224221.png)
 
-📁 Captura de pantalla 2025-12-26 224235.png
+---
 
-🛒 Carrito y Checkout
+### ☕ Home – Menú principal (Cliente)
 
-📁 Captura de pantalla 2025-12-26 224247.png
+![Menú Cliente](./captura de pantalla 2025-12-26 224235.png)
 
+---
+
+### 🛒 Catálogo de productos y Checkout
+
+![Checkout](./captura de pantalla 2025-12-26 224247.png)
 
 ---
 
@@ -164,7 +167,7 @@ npm run dev
 
 ## 🎯 Objetivo del proyecto
 
-Este proyecto fue desarrollado como **pieza de portafolio profesional**, demostrando:
+Proyecto desarrollado como **pieza de portafolio profesional**, demostrando:
 
 * Pensamiento de producto
 * UX realista
@@ -185,5 +188,4 @@ Ingeniería de Software – Ecuador 🇪🇨
 
 ⭐ Si este proyecto te resulta interesante, no olvides darle una estrella en GitHub.
 
-```
-
+````
