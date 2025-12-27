@@ -5,8 +5,6 @@ Plataforma web moderna para una cafetería, desarrollada con **Next.js + TypeScr
 Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de confirmación y un **video demo cinematográfico**.
 
 
-```
-
 ---
 
 ## 🖼️ Capturas del sistema
