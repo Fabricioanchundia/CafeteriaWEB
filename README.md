@@ -77,9 +77,12 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ---
 
+
 🧱 Arquitectura real del proyecto – Café Urban Roast
 
 El sistema está construido bajo una arquitectura de microservicios, con separación clara de responsabilidades y un frontend desacoplado.
+
+---text
 
 CAFETERIAWEB/
 │
@@ -128,6 +131,7 @@ CAFETERIAWEB/
 │   └── Tipos comunes
 │
 └── .vscode / config / env         # Configuración
+---
 
 🧠 ¿Por qué esta arquitectura es correcta?
 
@@ -139,6 +143,7 @@ CAFETERIAWEB/
 ✔ Analytics separado (visión de negocio)
 
 Esto NO es un CRUD escolar, es una arquitectura tipo startup / SaaS.
+---text
 
 🔄 Flujo real del sistema
 Cliente (Frontend)
@@ -155,6 +160,7 @@ API Gateway
 web-socket → estado en tiempo real
    ↓
 analytics-service
+---
 
 ---
 
