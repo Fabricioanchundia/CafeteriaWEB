@@ -51,19 +51,19 @@ Pensada como un **producto comercial real**, no como un demo académico.
 
 ### ☕ Home – Panel Admin
 
-![Home Admin](./captura de pantalla 2025-12-26 224221.png)
+![Home Admin](https://github.com/Fabricioanchundia/CafeteriaWEB/blob/main/Captura%20de%20pantalla%202025-12-26%20224221.png)
 
 ---
 
 ### ☕ Home – Menú principal (Cliente)
 
-![Menú Cliente](./captura de pantalla 2025-12-26 224235.png)
+![Menú Cliente](https://github.com/Fabricioanchundia/CafeteriaWEB/blob/main/Captura%20de%20pantalla%202025-12-26%20224235.png)
 
 ---
 
 ### 🛒 Catálogo de productos y Checkout
 
-![Checkout](./captura de pantalla 2025-12-26 224247.png)
+![Checkout](https://github.com/Fabricioanchundia/CafeteriaWEB/blob/main/Captura%20de%20pantalla%202025-12-26%20224247.png)
 
 ---
 
