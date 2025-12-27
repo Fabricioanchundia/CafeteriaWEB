@@ -8,11 +8,12 @@ Incluye navegación de menú, carrito en tiempo real, checkout, animaciones de c
 
 ## 🎥 Video Demo (Experiencia completa)
 
-> 🎬 Video generado con IA (estilo Sora) que muestra la experiencia del cliente:
-> ingreso al café, navegación del menú y proceso de pedido.
+> 🎬 Video generado con IA (estilo Sora) que representa la experiencia del cliente:
+> ingreso al café, exploración del menú y realización del pedido.
 
-📁 **Archivo:** `urban-roast-demo-copia.mp4`  
-El video se encuentra disponible en el repositorio.
+🔗 **Ver video demo (reproductor GitHub):**  
+https://github.com/Fabricioanchundia/CafeteriaWEB/urban-roast-demo.mp4
+
 
 
 ```md
