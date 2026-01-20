@@ -1,12 +1,9 @@
----
 
 # ☕ Café Urban Roast – Web Platform (Portfolio)
 
 **Café Urban Roast** is a modern web platform for a coffee shop, developed with **Next.js + TypeScript**, focused on **real user experience**, **scalable architecture**, and a **commercial-grade product experience**.
 
 The application simulates a real purchasing flow, from menu browsing to checkout, using modern frontend best practices and an architecture prepared for a **microservices-based backend**.
-
----
 
 ## 🚀 Main Features
 
