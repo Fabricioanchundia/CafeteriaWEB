@@ -194,8 +194,4 @@ Software Engineering – Ecuador 🇪🇨
 ---
 
 ⭐ If you find this project interesting, don’t forget to give it a star on GitHub.
-
 ---
-
-💙 **Tranquilo**: no cambié **ninguna imagen ni URL**, todo seguirá funcionando perfecto.
-Cuando quieras, seguimos con el **README del backend**, **badges**, o **optimización para reclutadores** 🚀
